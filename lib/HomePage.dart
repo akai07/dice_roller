@@ -19,13 +19,16 @@ class _HomePageState extends State<HomePage> {
   AssetImage six = const AssetImage("images/six.png");
 
   late AssetImage diceimage;
+  late AssetImage diceimage2;
   late AssetImage newImage;
+  late AssetImage newImage2;
 
   @override
   void initState() {
     super.initState();
     setState(() {
       diceimage = one;
+      diceimage2 = one;
     });
   }
 
@@ -52,8 +55,33 @@ class _HomePageState extends State<HomePage> {
         newImage = six;
         break;
     }
+    int random2 = (1 + Random().nextInt(6));
+
+    switch (random2) {
+      case 1:
+        newImage2 = one;
+
+        break;
+      case 2:
+        newImage2 = two;
+        break;
+      case 3:
+        newImage2 = three;
+        break;
+      case 4:
+        newImage2 = four;
+        break;
+      case 5:
+        newImage2 = five;
+
+        break;
+      case 6:
+        newImage2 = six;
+        break;
+    }
     setState(() {
       diceimage = newImage;
+      diceimage2 = newImage2;
     });
   }
 
@@ -67,18 +95,32 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image(
-              image: diceimage,
-              width: 200.0,
-              height: 200.0,
+            Column(
+              children: [
+                Image(
+                  image: diceimage,
+                  width: 200.0,
+                  height: 200.0,
+                ),
+                const Padding(padding: EdgeInsets.all(10.0)),
+                Image(image: diceimage2, width: 200.0, height: 200.0),
+              ],
             ),
             Container(
               margin: const EdgeInsets.only(top: 100.0),
-              child: ElevatedButton(
-                onPressed: rollDice,
-                child: const Text('Roll Dice'),
+              child: SizedBox(
+                width: 200,
+                height: 100,
+                child: ElevatedButton(
+                    onPressed: rollDice,
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0)))),
+                    //textsize bigger
+                    child: const Text('Roll Dice',
+                        style: TextStyle(fontSize: 30.0, color: Colors.blue))),
               ),
-            )
+            ),
           ],
         ),
       ),
