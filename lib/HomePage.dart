@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.circular(18.0)))),
                     //textsize bigger
                     child: const Text('Roll Dice',
-                        style: TextStyle(fontSize: 30.0, color: Colors.blue))),
+                        style: TextStyle(fontSize: 30.0, color: Colors.black))),
               ),
             ),
           ],
